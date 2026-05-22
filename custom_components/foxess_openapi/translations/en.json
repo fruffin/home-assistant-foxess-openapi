@@ -1,0 +1,33 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Device is already configured"
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "invalid_device": "Device serial number was not found",
+      "unknown": "Unexpected error"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "api_key": "API key",
+          "device_sn": "Device serial number",
+          "extended_pv": "Expose PV strings 7-18",
+          "host": "API host",
+          "name": "Name"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "extended_pv": "Expose PV strings 7-18"
+        }
+      }
+    }
+  }
+}

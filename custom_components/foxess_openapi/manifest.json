@@ -1,0 +1,11 @@
+{
+  "domain": "foxess_openapi",
+  "name": "FoxESS OpenAPI",
+  "codeowners": ["@fruffin"],
+  "config_flow": true,
+  "documentation": "https://github.com/fruffin/home-assistant-foxess-openapi",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/fruffin/home-assistant-foxess-openapi/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
