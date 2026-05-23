@@ -28,8 +28,8 @@ The default refresh cadence is:
 These intervals are exposed as configuration number entities on the FoxESS device,
 so they can be changed from the device details page. The device also exposes a
 force-refresh button that immediately refreshes all FoxESS Open API datasets.
-Normal refresh intervals are limited to 5 minutes or more to avoid burning
-through the FoxESS daily API allowance.
+Normal refresh intervals can be reduced to 1 minute, but the defaults are more
+conservative to avoid burning through the FoxESS daily API allowance (1440 call per day).
 
 ## Installation
 

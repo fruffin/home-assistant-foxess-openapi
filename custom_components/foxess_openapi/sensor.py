@@ -328,7 +328,7 @@ CORE_SENSOR_DESCRIPTIONS: tuple[FoxESSSensorEntityDescription, ...] = (
     ),
     FoxESSSensorEntityDescription(
         key="grid_consumption_energy",
-        name="Grid Consumption",
+        name="Grid Consumption Today",
         device_class=SensorDeviceClass.ENERGY,
         state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -336,7 +336,7 @@ CORE_SENSOR_DESCRIPTIONS: tuple[FoxESSSensorEntityDescription, ...] = (
     ),
     FoxESSSensorEntityDescription(
         key="feed_in_energy",
-        name="Feed-in",
+        name="Feed-in Today",
         device_class=SensorDeviceClass.ENERGY,
         state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -344,7 +344,7 @@ CORE_SENSOR_DESCRIPTIONS: tuple[FoxESSSensorEntityDescription, ...] = (
     ),
     FoxESSSensorEntityDescription(
         key="battery_charge_energy",
-        name="Battery Charge",
+        name="Battery Charge Today",
         device_class=SensorDeviceClass.ENERGY,
         state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -352,7 +352,7 @@ CORE_SENSOR_DESCRIPTIONS: tuple[FoxESSSensorEntityDescription, ...] = (
     ),
     FoxESSSensorEntityDescription(
         key="battery_discharge_energy",
-        name="Battery Discharge",
+        name="Battery Discharge Today",
         device_class=SensorDeviceClass.ENERGY,
         state_class=SensorStateClass.TOTAL_INCREASING,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
