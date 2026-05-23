@@ -15,7 +15,6 @@ FoxESS OpenAPI is config-flow first, creates a proper Home Assistant device for 
 - Force-refresh button for ad hoc API updates.
 - Optional support for extended PV strings up to PV18.
 - Optional second-battery sensors are only created when FoxESS reports values for them.
-- Local brand assets for Home Assistant versions that support custom integration assets.
 
 ## Installation
 
@@ -65,7 +64,7 @@ Normal refresh intervals can be reduced to 1 minute, but the defaults are more c
 
 ## Branding
 
-The integration ships the same FoxESS brand icon and logo used by the existing `foxess` integration under `custom_components/foxess_openapi/brand`.
+The integration ships with local FoxESS brand icon and logo under `custom_components/foxess_openapi/brand`.
 
 Home Assistant versions before 2026.3 do not support local brand assets for custom integrations. Those versions may show a generic integration icon.
 
