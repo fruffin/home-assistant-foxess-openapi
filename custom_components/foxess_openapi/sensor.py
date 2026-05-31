@@ -78,6 +78,11 @@ def _battery_value(key: str) -> Callable[[FoxESSData], StateType]:
     return lambda data: data.battery.get(key)
 
 
+def _setting_value(key: str) -> Callable[[FoxESSData], StateType]:
+    """Return a device setting value function."""
+    return lambda data: (data.settings.get(key) or {}).get("value")
+
+
 def _should_create_sensor(
     data: FoxESSData, description: FoxESSSensorEntityDescription
 ) -> bool:
@@ -249,6 +254,22 @@ CORE_SENSOR_DESCRIPTIONS: tuple[FoxESSSensorEntityDescription, ...] = (
         icon="mdi:state-machine",
         value_fn=_running_state,
         available_fn=lambda data: bool(data.realtime),
+    ),
+    FoxESSSensorEntityDescription(
+        key="work_mode",
+        name="Work Mode",
+        icon="mdi:cog-transfer",
+        value_fn=_setting_value("WorkMode"),
+        available_fn=lambda data: (
+            (data.settings.get("WorkMode") or {}).get("value") is not None
+        ),
+    ),
+    FoxESSSensorEntityDescription(
+        key="inverter_fault_code",
+        name="Inverter Fault Code",
+        icon="mdi:alert-circle-outline",
+        value_fn=_realtime_value("currentFault"),
+        available_fn=lambda data: _has_realtime(data, "currentFault"),
     ),
     FoxESSSensorEntityDescription(
         key="response_time",

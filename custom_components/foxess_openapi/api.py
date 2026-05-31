@@ -24,6 +24,7 @@ PATH_DAILY_GENERATION = "/op/v0/device/generation"
 PATH_DEVICE_DETAIL = "/op/v1/device/detail"
 PATH_MONTHLY_REPORT = "/op/v0/device/report/query"
 PATH_REALTIME = "/op/v1/device/real/query"
+PATH_SETTING = "/op/v0/device/setting/get"
 
 REPORT_VARIABLES = [
     "feedin",
@@ -92,6 +93,7 @@ REALTIME_VARIABLES = [
     "RVolt",
     "ResidualEnergy",
     "runningState",
+    "currentFault",
     "currentFaultCount",
     "SCurrent",
     "SFreq",
@@ -211,6 +213,19 @@ class FoxESSOpenApi:
             "GET",
             PATH_BATTERY_SOC,
             params={"sn": serial_number},
+        )
+        if not isinstance(result, dict):
+            return {}
+        return result
+
+    async def get_device_setting(
+        self, serial_number: str, setting_key: str
+    ) -> dict[str, Any]:
+        """Return a device setting."""
+        result = await self._request(
+            "POST",
+            PATH_SETTING,
+            json={"sn": serial_number, "key": setting_key},
         )
         if not isinstance(result, dict):
             return {}

@@ -44,6 +44,7 @@ class FoxESSData:
 
     device: dict[str, Any] = field(default_factory=dict)
     realtime: dict[str, Any] = field(default_factory=dict)
+    settings: dict[str, Any] = field(default_factory=dict)
     report: dict[str, Any] = field(default_factory=dict)
     generation: dict[str, Any] = field(default_factory=dict)
     battery: dict[str, Any] = field(default_factory=dict)
@@ -111,6 +112,7 @@ class FoxESSCoordinator(DataUpdateCoordinator[FoxESSData]):
         data = FoxESSData(
             device=dict(self._last_data.device),
             realtime=dict(self._last_data.realtime),
+            settings=dict(self._last_data.settings),
             report=dict(self._last_data.report),
             generation=dict(self._last_data.generation),
             battery=dict(self._last_data.battery),
@@ -133,10 +135,19 @@ class FoxESSCoordinator(DataUpdateCoordinator[FoxESSData]):
                     self.serial_number,
                     self.max_pv_strings,
                 )
+                try:
+                    data.settings["WorkMode"] = await self.api.get_device_setting(
+                        self.serial_number,
+                        "WorkMode",
+                    )
+                except FoxESSApiError as err:
+                    _LOGGER.debug("Unable to fetch FoxESS WorkMode setting: %s", err)
+                    data.settings.pop("WorkMode", None)
                 self._last_realtime_refresh = now
                 refreshed = True
             elif not data.online:
                 data.realtime = {}
+                data.settings = {}
 
             if report_refresh_due:
                 data.report = await self.api.get_monthly_report(
